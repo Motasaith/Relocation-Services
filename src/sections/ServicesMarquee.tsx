@@ -7,10 +7,39 @@ const SERVICES = [
   'RELOCATION PACKAGES',
 ];
 
-export default function ServicesMarquee() {
-  // Triple the services for seamless looping
-  const allServices = [...SERVICES, ...SERVICES, ...SERVICES];
+function MarqueeTrack() {
+  return (
+    <div className="marquee-track" aria-hidden="true">
+      {SERVICES.map((service, i) => (
+        <span key={i} className="marquee-item">
+          <span
+            className="font-display"
+            style={{
+              fontSize: 'clamp(24px, 3vw, 40px)',
+              fontWeight: 400,
+              color: 'rgba(247, 245, 243, 0.7)',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            {service}
+          </span>
+          <span
+            className="mx-8"
+            style={{
+              fontSize: '8px',
+              color: 'rgba(183, 183, 164, 0.5)',
+              verticalAlign: 'middle',
+            }}
+          >
+            ◆
+          </span>
+        </span>
+      ))}
+    </div>
+  );
+}
 
+export default function ServicesMarquee() {
   return (
     <section
       data-theme="dark"
@@ -24,31 +53,9 @@ export default function ServicesMarquee() {
     >
       <div className="marquee">
         <div className="marquee-content">
-          {allServices.map((service, i) => (
-            <span key={i} className="marquee-item">
-              <span
-                className="font-display"
-                style={{
-                  fontSize: 'clamp(24px, 3vw, 40px)',
-                  fontWeight: 400,
-                  color: 'rgba(247, 245, 243, 0.7)',
-                  whiteSpace: 'nowrap',
-                }}
-              >
-                {service}
-              </span>
-              <span
-                className="mx-8"
-                style={{
-                  fontSize: '8px',
-                  color: 'rgba(183, 183, 164, 0.5)',
-                  verticalAlign: 'middle',
-                }}
-              >
-                ◆
-              </span>
-            </span>
-          ))}
+          {/* Two identical tracks side by side for seamless infinite loop */}
+          <MarqueeTrack />
+          <MarqueeTrack />
         </div>
       </div>
     </section>

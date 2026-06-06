@@ -26,18 +26,30 @@ export default function Hero() {
     <section
       ref={sectionRef}
       id="hero"
+      data-theme="dark"
       className="relative w-full overflow-hidden"
       style={{ height: '100vh', minHeight: '700px' }}
     >
-      {/* Three.js Carousel Background */}
+      {/* Image Slideshow Background */}
       <HeroCarousel />
 
-      {/* Dark Gradient Overlay */}
+      {/* Top gradient — ensures nav text is readable on any hero image */}
+      <div
+        className="absolute top-0 left-0 right-0"
+        style={{
+          zIndex: 1,
+          height: '140px',
+          background: 'linear-gradient(to bottom, rgba(1,42,74,0.7) 0%, rgba(1,42,74,0.3) 60%, transparent 100%)',
+          pointerEvents: 'none',
+        }}
+      />
+
+      {/* Full Dark Gradient Overlay */}
       <div
         className="absolute inset-0"
         style={{
           zIndex: 1,
-          background: 'linear-gradient(to bottom, rgba(1,42,74,0.55) 0%, rgba(1,42,74,0.4) 50%, rgba(1,42,74,0.7) 100%)',
+          background: 'linear-gradient(to bottom, rgba(1,42,74,0.45) 0%, rgba(1,42,74,0.3) 50%, rgba(1,42,74,0.7) 100%)',
         }}
       />
 
